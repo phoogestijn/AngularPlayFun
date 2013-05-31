@@ -1,40 +1,35 @@
-nextId = 0
+package controllers
 
-people = [
-	{"id": "#{nextId++}", "name": "Saasha", "age": "6"}
-	{"id": "#{nextId++}", "name": "Planet", "age": "8"}
-]
+import play.api.Logger
+import play.api.mvc.{ Controller, Action }
+import play.api.mvc.Results._
+import play.api.Play.{ current, configuration }
+import play.api.libs.json.Json
 
-isUniqueName = (name) ->
-	(name for person in people when person.name is name).length is 0
+/** De overall controller **/
+object Application extends Controller {
 
-module.exports = (app, options) ->
-	app.get '/', (req, res) ->
-		res.render "#{options.base}/index.html"
+  def index = Action {
+  	Ok(index())
+  }
 
-	app.get '/people', (req, res) ->
-		res.json people
+  def persons = Action {
+  	Ok(Json.toJson(Person.persons)
+  }
+  /* add a person from the POST */
+  def addPerson = Action(parser.json){ implicit request =>
+    val name = (request.body \ "name").as[String]
+    val age = (request.body \ "age").as[Int]
+  	match Person.add(Person(nextId,name,age)) {
+  		case Left(person:Person) => Ok(Json.toJson(person))
+  		case Right(message:Message) => Forbidden(Json.toJson(message))
+  	}
+  }
 
-	app.post '/people', (req, res) ->
-		name = req.body.name
-		age = req.body.age
-
-		message =
-			"title": "Duplicate!"
-			"message": "#{name} is a duplicate.  Please enter a new name."
-
-		return res.send(message, 403) if not isUniqueName name
-
-		person =
-			"id": "#{nextId++}"
-			"name": "#{name}"
-			"age": "#{age}"
-
-		people.push person
-		res.json person
-
-	app.get '/people/:id', (req, res) ->
-		id = req.params.id
-		current = person for person in people when parseInt(person.id, 10) is parseInt(id, 10)
-
-		res.json current
+  def findPerson(id:Int) = Action {
+  	match Person.findById(id){
+  		case Some(person) => Ok(Json.toJson(person))
+  		case None => NotFound
+  	}
+  }
+}
