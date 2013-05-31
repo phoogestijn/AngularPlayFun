@@ -3,3 +3,8 @@ dist/
 dist_test/
 node_modules/
 .temp/
+.classpath
+.project
+.settings/
+.target/
+target/
