@@ -1,4 +1,4 @@
-angular.module('app').config ['$routeProvider', ($routeProvider) ->
+app.config ['$routeProvider', ($routeProvider) ->
 	$routeProvider
 	.when '/github/:searchTerm',
 		controller: 'gitHubController'

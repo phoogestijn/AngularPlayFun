@@ -7,6 +7,9 @@ import play.api.mvc.BodyParsers._
 import play.api.Play.{ current, configuration }
 import play.api.libs.json.Json
 import models.{Person, Message}
+import play.api.libs.Crypto
+import java.io.File
+import scala.io.Source
 
 object Application extends Controller {
 
@@ -33,5 +36,22 @@ object Application extends Controller {
   		case Some(person) => Ok(Json.toJson(person))
   		case None => NotFound
   	}
+  }
+}
+object AngFun {
+  def addHash(uri:String):String ={
+    current.getExistingFile(uri).map(toString(_)) match {
+      case Some(string) => {
+        val hash =Crypto.sign(string)
+        s"$uri?h=$hash"
+      }
+      case None => {
+        Logger.error(s"file for uri $uri not found")
+        uri
+      }
+    }
+  }
+  private def toString(f:File):String={
+    Source.fromFile(f).mkString
   }
 }
