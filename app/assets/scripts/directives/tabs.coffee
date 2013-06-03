@@ -16,6 +16,7 @@ angular.module('app').directive 'appTabs', ['$log', ($log) ->
 
 			if tabId
 				$rootScope.$on "changeTab##{tabId}", ->
+					console.log('on changeTab '+tabId)
 					$scope.select tab
 	]
 

@@ -3,8 +3,10 @@ angular.module('app').controller 'gitHubController', ['$log', '$scope', '$locati
 		$location.path "/github/#{searchTerm}"
 
 	$scope.onRouteChange = (routeParams) ->
+		console.log('gitHubController received onRouteChange')
 		$scope.searchTerm = routeParams.searchTerm
 
 		gitHubService.get($scope.searchTerm).then (results) ->
+			console.log('received search result from gitHubService: '+results)
 			$scope.repos = results
 ]

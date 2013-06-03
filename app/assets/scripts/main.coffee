@@ -31,8 +31,6 @@ require
 			deps: ['app'],
 		'app'                                : 
 			deps: ['angular', 'webjars!angular-resource.js'],
-		'bootstrap'                          : 
-			deps: ['app'],
 		'routes'                             : 
 			deps: ['app'],
 		'run'                                : 
@@ -51,6 +49,7 @@ require
 		'directives/tabs'
 		'filters/twitterfy'
 		'responseInterceptors/dispatcher'
+		'routes'
 		'run'
 		'views'
 	], (angular) ->

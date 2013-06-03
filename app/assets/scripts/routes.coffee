@@ -1,10 +1,11 @@
-app.config ['$routeProvider', ($routeProvider) ->
+angular.module('app').config ['$routeProvider', ($routeProvider) ->
 	$routeProvider
 	.when '/github/:searchTerm',
 		controller: 'gitHubController'
 		reloadOnSearch: true
 		resolve:
 			changeTab: ['$rootScope', ($rootScope) ->
+				console.log('broadcast changeTab#github')
 				$rootScope.$broadcast 'changeTab#gitHub'
 			]
 	.when '/people/:id',
@@ -12,6 +13,7 @@ app.config ['$routeProvider', ($routeProvider) ->
 		reloadOnSearch: true
 		resolve:
 			changeTab: ['$rootScope', ($rootScope) ->
+				console.log('broadcast changeTab#people')
 				$rootScope.$broadcast 'changeTab#people'
 			]
 	.otherwise

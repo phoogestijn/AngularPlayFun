@@ -1,2 +1,1 @@
-require ['angular'], (angular)->
-	angular.module 'app', ['ngResource']
+angular.module 'app', ['ngResource']

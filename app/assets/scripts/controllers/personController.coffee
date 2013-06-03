@@ -12,5 +12,6 @@ angular.module('app').controller 'personController', ['$log', '$scope', '$locati
 			($scope.error = results.data) if results.status is 403
 
 	personService.get().then (results) ->
+		console.log("people queried from server")
 		$scope.people = results
 ]

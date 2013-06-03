@@ -2,6 +2,7 @@ angular.module('app').service 'messageService', ['$log', '$rootScope', ($log, $r
 	self = @
 
 	publish = (name, parameters) ->
+		console.log('messageService.publish '+name)
 		parameters.timeStamp = Date.now()
 
 		$rootScope.$broadcast name, parameters

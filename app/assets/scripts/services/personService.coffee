@@ -14,6 +14,7 @@ angular.module('app').service 'personService', ['$log', '$q', '$resource', ($log
 		defer.promise
 
 	getPerson = (id) ->
+		console.log('getPerson')
 		defer = $q.defer()
 
 		Person.get {id}, (results) ->
