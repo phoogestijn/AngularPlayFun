@@ -17,18 +17,17 @@ object Person {
     id
   }
 
-  private def isUnique(person: Person) = !persons.exists(_.name == person.name)
-
   def add(person: Person): Either[Person, Message] = {
+    def isUnique(person: Person) = !persons.exists(_.name == person.name)
+
     if (isUnique(person)) {
       persons = person :: persons
-      Logger.warn(s"added nr ${person.id}")
       Left(person)
     } else {
       Right(Message("Duplicate!", s"${person.name} is a duplicate.  Please enter a new name."))
     }
   }
-  
+
   def findById(id: Int): Option[Person] = {
     persons.find(_.id == id)
   }

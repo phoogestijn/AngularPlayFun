@@ -1,7 +1,6 @@
 @()
 @import play.api.Play
 @import play.api.Play.current 
-@import controllers.AngFun._
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns:ng="http://angularjs.org" xmlns:app="ignored"> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" xmlns:ng="http://angularjs.org" xmlns:app="ignored"> <![endif]-->
@@ -15,7 +14,6 @@
 		<meta name="viewport" content="width=device-width" />
 
 		<!--[if lte IE 8]> <script src="/scripts/libs/json3.js?v=<%= config.hash('./src/scripts/libs/json3.js') %>"></script> <script src="/scripts/libs/html5shiv-printshiv.js?v=<%= config.hash('./src/scripts/libs/html5shiv-printshiv.js') %>"></script> <![endif]-->
-
 		@if(Play.isProd) { 
 			<link rel="stylesheet" href="@routes.Assets.at("styles/styles.min.css")" />
 		}else{ 
@@ -46,10 +44,10 @@
 		<ng:view></ng:view>
 		<div class="container">
 			<div class="hero-unit">
-				<h1>Playing with <a href="http://angularjs.org" target="_blank">AngularJS</a></h1>
-				<p>and also <a href="http://requirejs.org/" target="_blank">RequireJS</a></p>
-				<p>Dynamically loading dependencies in <b>dev</b>, but minimize the hell out of it for <b>prod</b>.</p>
-				<p>RequireJS is only used for dev and build.</p>
+				<h1>JS MVC</h1>
+				<p>A JS MVC application demonstrating the use of <a href="http://angularjs.org" target="_blank">AngularJS</a>, <a href="http://requirejs.org/" target="_blank">RequireJS</a>, 
+				<a href="http://coffeescript.org/" target="_blank">Coffeescript</a>, <a href="http://www.playframework.com/" target="_blank">Play framework</a>,
+				 <a href="http://www.scala-lang.org/" target="_blank">Scala</a> and <a href="http://www.webjars.org/" target="_blank">Webjars</a>.</p>
 			</div>
 			<div class="row">
 				<div class="span8">
