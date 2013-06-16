@@ -18,4 +18,10 @@ Java 7 and [Sbt](http://www.scala-sbt.org/).
 `sbt ~run` runs the application in dev mode, continuously watching for changes.  
 `sbt stage` builds the application for staging. The application can then be run by `target/start`  
 
+##Known issues
+
+- requirejs optimisation doesn't work with the special requirejs library provided by webjars-play. This seems to be 
+an issue with webjars-pla
+- unittesting of js with jasmine doesnt work
+
 

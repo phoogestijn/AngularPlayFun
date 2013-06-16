@@ -13,7 +13,8 @@
 		<meta name="description" content="AngularJS Reference Architecture" />
 		<meta name="viewport" content="width=device-width" />
 
-		<!--[if lte IE 8]> <script src="/scripts/libs/json3.js?v=<%= config.hash('./src/scripts/libs/json3.js') %>"></script> <script src="/scripts/libs/html5shiv-printshiv.js?v=<%= config.hash('./src/scripts/libs/html5shiv-printshiv.js') %>"></script> <![endif]-->
+		<!--[if lte IE 8]> <script src="@routes.Assets.at("scripts/libs/json3.js")"></script>
+		 <script src="@routes.Assets.at("scripts/libs/html5shiv-printshiv.js")"></script> <![endif]-->
 		@if(Play.isProd) { 
 			<link rel="stylesheet" href="@routes.Assets.at("styles/styles.min.css")" />
 		}else{ 

@@ -28,12 +28,13 @@ object Application extends Controller {
     Ok(Json.toJson(Person.persons))
   }
 
-  /* add a person from the POST */
-  def addPerson = Action(parse.json) { implicit request =>
-    implicit val tupleReads = (
+  private implicit val tupleReads = (
       (JsPath \ 'name).read[String] and
       (JsPath \ 'age).read[Int]) tupled
 
+  /* add a person from the POST */
+  def addPerson = Action(parse.json) { 
+    implicit request =>
     request.body.validate[(String, Int)].map {
       case (name, age) => {
         Person.add(Person(Person.nextId(), name, age)) match {
@@ -59,4 +60,6 @@ object Application extends Controller {
       case None => NotFound
     }
   }
+  
+  def editPerson(id:Int)= TODO
 }

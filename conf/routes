@@ -1,11 +1,15 @@
 
 GET 	/ 				controllers.Application.index
 
+#rest api
+
 GET  	/people 	  	controllers.Application.persons
 
 POST 	/people  		controllers.Application.addPerson
 
 GET  	/people/:id  	controllers.Application.findPerson(id:Int)
+
+POST	/people/:id		controllers.Application.editPerson(id:Int)
 
 # Map static resources from the /public folder to the /assets URL path
 #GET     /assets/*file               controllers.Assets.at(path="/public", file)
