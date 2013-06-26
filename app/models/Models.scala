@@ -8,10 +8,11 @@ case class Person(id: Int, name: String, age: Int)
 object Person {
   implicit val jsonFormat = Json.format[Person]
 
+  private var id = 0
+  
   var persons = List(Person(nextId(), name = "Saasha", age = 6),
     Person(nextId(), name = "Planet", age = 8))
-
-  private var id = 0
+  
   def nextId() = {
     id += 1
     id
